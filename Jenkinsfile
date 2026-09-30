@@ -52,7 +52,11 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm audit --audit-level=high --json > npm-audit.json'
+               sh '''
+                  npm audit --json > npm-audit.json || true
+                  npm audit --audit-level=high
+              '''
+                // sh 'npm audit --audit-level=high --json > npm-audit.json'
             }
         }
 
